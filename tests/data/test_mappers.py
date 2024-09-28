@@ -1,7 +1,8 @@
 """Test the collection of data mappers."""
+
 import unittest
 
-from cerbernetix.toolbox.data import boolean, decimal, passthrough
+from cerbernetix.toolbox.data import boolean, decimal, default, passthrough
 from cerbernetix.toolbox.testing import test_cases
 
 
@@ -72,3 +73,9 @@ class TestDataMappers(unittest.TestCase):
         """Test the value is casted to a float."""
         mapper = decimal(separator, thousands)
         self.assertEqual(mapper(value_set), value_get)
+
+    def test_default(self):
+        """Test the default value is returned."""
+        self.assertEqual(default(None, "foo"), "foo")
+        self.assertEqual(default("bar", "foo"), "bar")
+        self.assertEqual(default(0, 42), 0)

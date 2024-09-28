@@ -5,6 +5,7 @@ It contains:
     - `passthrough(value)` - A passthrough mapper. It returns the value as it is.
     - `boolean(value)` - Converts a value to a boolean value.
     - `decimal(separator, thousands)` - Creates a mapper for casting decimal values to floats.
+    - `default(value, default_value)` - Returns the value if not None, or the default value.
 - `ValueExtractor(entries, mapper)` - A tool for extracting values from a set of possible entries.
 
 Examples:
@@ -50,5 +51,6 @@ data = [
 print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 ```
 """
-from cerbernetix.toolbox.data.mappers import ValueMapper, boolean, decimal, passthrough
+
+from cerbernetix.toolbox.data.mappers import ValueMapper, boolean, decimal, default, passthrough
 from cerbernetix.toolbox.data.value_extractor import ValueExtractor

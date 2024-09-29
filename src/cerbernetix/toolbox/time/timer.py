@@ -202,7 +202,7 @@ class Timer:
         Returns:
             tuple[Duration]: A tuple containing the time elapsed for each checkpoint.
         """
-        return tuple([self._to_duration(duration) for duration in self._checkpoints])
+        return tuple((self._to_duration(duration) for duration in self._checkpoints))
 
     def check(self) -> Duration:
         """Capture a new checkpoint.

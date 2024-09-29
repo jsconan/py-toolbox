@@ -22,8 +22,14 @@ print(mapper("3,14")) # 3.14
 
 mapper = mappers.decimal(",", ".")
 print(mapper("3.753.323,184")) # 3753323.184
+
+# Gets a default value
+print(mappers.default(None, "foo")) # "foo"
+print(mappers.default("bar", "foo")) # "bar"
+print(mappers.default(42, "foo")) # 42
 ```
 """
+
 from typing import Any, Protocol
 
 
@@ -139,3 +145,27 @@ def decimal(separator: str = None, thousands: str = None) -> ValueMapper:
         return float(value)
 
     return mapper
+
+
+def default(value: Any, default_value: Any) -> Any:
+    """A mapper that returns a default value when the input is None.
+
+    Args:
+        value (Any): The value to map.
+        default_value (Any): The default value to return when the input is None.
+
+    Returns:
+        Any: The value or the default value.
+
+    Examples:
+    ```python
+    from cerbernetix.toolbox.data import default
+
+    print(default(None, "foo")) # "foo"
+    print(default("bar", "foo")) # "bar"
+    print(default(42, "foo")) # 42
+    ```
+    """
+    if value is None:
+        return default_value
+    return value

@@ -29,12 +29,17 @@ print(mapper("3,14")) # 3.14
 
 mapper = mappers.decimal(",", ".")
 print(mapper("3.753.323,184")) # 3753323.184
+
+# Gets a default value
+print(mappers.default(None, "foo")) # "foo"
+print(mappers.default("bar", "foo")) # "bar"
+print(mappers.default(42, "foo")) # 42
 ``` 
 
 
 ---
 
-<a href="../src/cerbernetix/toolbox/data/mappers.py#L46"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/mappers.py#L52"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `passthrough`
 
@@ -71,7 +76,7 @@ print(passthrough({})) # {}
 
 ---
 
-<a href="../src/cerbernetix/toolbox/data/mappers.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/mappers.py#L74"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `boolean`
 
@@ -119,7 +124,7 @@ print(boolean({})) # False
 
 ---
 
-<a href="../src/cerbernetix/toolbox/data/mappers.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/mappers.py#L110"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `decimal`
 
@@ -158,7 +163,44 @@ print(mapper("3.753.323,184")) # 3753323.184
 
 ---
 
-<a href="../src/cerbernetix/toolbox/data/mappers.py#L30"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/mappers.py#L150"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+## <kbd>function</kbd> `default`
+
+```python
+default(value: Any, default_value: Any) → Any
+```
+
+A mapper that returns a default value when the input is None. 
+
+
+
+**Args:**
+ 
+ - <b>`value`</b> (Any):  The value to map. 
+ - <b>`default_value`</b> (Any):  The default value to return when the input is None. 
+
+
+
+**Returns:**
+ 
+ - <b>`Any`</b>:  The value or the default value. 
+
+
+
+**Examples:**
+ ```python
+from cerbernetix.toolbox.data import default
+
+print(default(None, "foo")) # "foo"
+print(default("bar", "foo")) # "bar"
+print(default(42, "foo")) # 42
+``` 
+
+
+---
+
+<a href="../src/cerbernetix/toolbox/data/mappers.py#L36"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `ValueMapper`
 The interface for a value mapper. 

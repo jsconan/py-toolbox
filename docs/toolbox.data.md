@@ -6,18 +6,23 @@
 A collection of data utilities. 
 
 It contains: 
+- Formatters: 
+    - `format_columns(cells, length, separator, col_dir)` - Formats a list of cells into columns. 
+    - `format_heading(title, length, decorator, justify, margin, simple)` - Formats a heading. 
+    - `print_columns(cells, length, separator, col_dir)` - Prints a list of cells into columns. 
+    - `print_heading(title, length, decorator, justify, margin, simple)` - Prints a heading. 
 - Value mappers: 
     - `passthrough(value)` - A passthrough mapper. It returns the value as it is. 
     - `boolean(value)` - Converts a value to a boolean value. 
     - `decimal(separator, thousands)` - Creates a mapper for casting decimal values to floats. 
+    - `default(value, default_value)` - Returns the value if not None, or the default value. 
 - `ValueExtractor(entries, mapper)` - A tool for extracting values from a set of possible entries. 
 
 
 
 **Examples:**
  ```python
-from cerbernetix.toolbox.data import mappers
-from cerbernetix.toolbox.data import ValueExtractor
+from cerbernetix.toolbox.data import formatters, mappers, ValueExtractor
 
 # Passthrough a value
 print(mappers.passthrough("foo")) # "foo"
@@ -55,6 +60,22 @@ data = [
      {"firstname": "Jane", "lastname": "Doe"},
 ]
 print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
+
+print(formatters.format_heading("Hello, World!"))
+# ---------------------------------------- Hello, World! ------------------------------------------
+
+formatters.print_heading("Hello, World!")
+# ---------------------------------------- Hello, World! ------------------------------------------
+
+print(formatters.format_columns([1, 2, 3, 4, 5, 6], 2))
+# 1 4
+# 2 5
+# 3 6
+
+formatters.print_columns([1, 2, 3, 4, 5, 6], 2)
+# 1 4
+# 2 5
+# 3 6
 ``` 
 
 

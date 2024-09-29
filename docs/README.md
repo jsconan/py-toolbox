@@ -9,6 +9,7 @@
 - [`toolbox.config.config`](./toolbox.config.config.md#module-toolboxconfigconfig): A class for handling a configuration.
 - [`toolbox.config.config_option`](./toolbox.config.config_option.md#module-toolboxconfigconfig_option): A class for handling config options.
 - [`toolbox.data`](./toolbox.data.md#module-toolboxdata): A collection of data utilities.
+- [`toolbox.data.formatters`](./toolbox.data.formatters.md#module-toolboxdataformatters): A collection of formatting utilities.
 - [`toolbox.data.mappers`](./toolbox.data.mappers.md#module-toolboxdatamappers): A collection of data mappers.
 - [`toolbox.data.value_extractor`](./toolbox.data.value_extractor.md#module-toolboxdatavalue_extractor): A tool for extracting values from a set of possible entries.
 - [`toolbox.files`](./toolbox.files.md#module-toolboxfiles): The `files` package provides several utilities for handling files.
@@ -19,6 +20,7 @@
 - [`toolbox.files.path`](./toolbox.files.path.md#module-toolboxfilespath): A collection of utilities around file paths.
 - [`toolbox.files.pickle_file`](./toolbox.files.pickle_file.md#module-toolboxfilespickle_file): A simple API for reading and writing pickle files.
 - [`toolbox.iterators`](./toolbox.iterators.md#module-toolboxiterators): A collection of iterators.
+- [`toolbox.iterators.iter_cells`](./toolbox.iterators.iter_cells.md#module-toolboxiteratorsiter_cells): An iterator for returning elements from a list.
 - [`toolbox.iterators.iter_deep`](./toolbox.iterators.iter_deep.md#module-toolboxiteratorsiter_deep): An iterator for returning elements from nested iterables.
 - [`toolbox.logging`](./toolbox.logging.md#module-toolboxlogging): The `logging` package provides several utilities for logging purpose.
 - [`toolbox.logging.config`](./toolbox.logging.config.md#module-toolboxloggingconfig): A collection of utilities for logging purpose.
@@ -56,8 +58,13 @@
 ## Functions
 
 - [`config_option.create_options`](./toolbox.config.config_option.md#function-create_options): Create options from a list of descriptors.
+- [`formatters.format_columns`](./toolbox.data.formatters.md#function-format_columns): Formats a list of cells into columns.
+- [`formatters.format_heading`](./toolbox.data.formatters.md#function-format_heading): Formats a heading.
+- [`formatters.print_columns`](./toolbox.data.formatters.md#function-print_columns): Prints a list of cells into columns.
+- [`formatters.print_heading`](./toolbox.data.formatters.md#function-print_heading): Prints a formatted heading.
 - [`mappers.boolean`](./toolbox.data.mappers.md#function-boolean): Converts a value to a boolean value.
 - [`mappers.decimal`](./toolbox.data.mappers.md#function-decimal): Creates a mapper for casting decimal values to floats.
+- [`mappers.default`](./toolbox.data.mappers.md#function-default): A mapper that returns a default value when the input is None.
 - [`mappers.passthrough`](./toolbox.data.mappers.md#function-passthrough): A passthrough mapper. It returns the value as it is.
 - [`csv_file.read_csv_file`](./toolbox.files.csv_file.md#function-read_csv_file): Reads a CSV content from a file.
 - [`csv_file.read_zip_csv`](./toolbox.files.csv_file.md#function-read_zip_csv): Reads a CSV content from a Zip.
@@ -79,6 +86,7 @@
 - [`path.get_module_path`](./toolbox.files.path.md#function-get_module_path): Gets the path to the given module.
 - [`pickle_file.read_pickle_file`](./toolbox.files.pickle_file.md#function-read_pickle_file): Loads a list of objects from a file.
 - [`pickle_file.write_pickle_file`](./toolbox.files.pickle_file.md#function-write_pickle_file): Writes a list of objects to a file.
+- [`iter_cells.iter_cells`](./toolbox.iterators.iter_cells.md#function-iter_cells): Iterates over a list of cells in a table-like manner.
 - [`iter_deep.iter_deep`](./toolbox.iterators.iter_deep.md#function-iter_deep): Creates an iterator that returns elements from each iterable including nested ones.
 - [`config.handle_uncaught_exceptions`](./toolbox.logging.config.md#function-handle_uncaught_exceptions): Installs a collector for logging uncaught exceptions.
 - [`config.setup_file_logging`](./toolbox.logging.config.md#function-setup_file_logging): Setup the application log to a file logger.

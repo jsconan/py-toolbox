@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `print_heading(title, length, decorator, justify, margin, simple)` - Prints a formatted heading.
 -   `print_columns(cells, length, separator, col_dir)` - Prints a list of cells into columns.
 -   `iter_cells(cells, nb_cols, nb_cells, col_dir)` - Iterator for returning elements from a list.
+-   `concurrent_tasks(callback, tasks)`: Calls the given callback concurrently with the given tasks.
 
 ### Fixed
 

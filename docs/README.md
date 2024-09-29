@@ -30,6 +30,7 @@
 - [`toolbox.math.utils`](./toolbox.math.utils.md#module-toolboxmathutils): A set of helper functions related to math.
 - [`toolbox.system`](./toolbox.system.md#module-toolboxsystem): The `system` package provides several utilities for low level management.
 - [`toolbox.system.module`](./toolbox.system.module.md#module-toolboxsystemmodule): A set of helpers for loading properties dynamically.
+- [`toolbox.system.parallel`](./toolbox.system.parallel.md#module-toolboxsystemparallel): A set of helpers for working with concurrent programming.
 - [`toolbox.system.type`](./toolbox.system.type.md#module-toolboxsystemtype): A set of helpers for types management.
 - [`toolbox.testing`](./toolbox.testing.md#module-toolboxtesting): The `testing` package provides utilities for testing purpose.
 - [`toolbox.testing.decorators`](./toolbox.testing.decorators.md#module-toolboxtestingdecorators): A collection of decorators for testing purpose.
@@ -98,6 +99,7 @@
 - [`utils.quantity`](./toolbox.math.utils.md#function-quantity): Gets a quantity with respect to a quota applied to a total.
 - [`module.import_and_call`](./toolbox.system.module.md#function-import_and_call): Imports a callable from the given namespace, then call it with the given parameters.
 - [`module.import_property`](./toolbox.system.module.md#function-import_property): Imports a property from the given namespace.
+- [`parallel.concurrent_tasks`](./toolbox.system.parallel.md#function-concurrent_tasks): Calls the given callback function concurrently with the given tasks.
 - [`type.full_type`](./toolbox.system.type.md#function-full_type): Gets the fully qualified type of a value.
 - [`decorators.test_cases`](./toolbox.testing.decorators.md#function-test_cases): Creates a decorator for parametric test cases.
 

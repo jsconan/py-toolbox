@@ -3,7 +3,7 @@
 import unittest
 from unittest.mock import patch
 
-from cerbernetix.toolbox.data import format_heading, print_heading
+from cerbernetix.toolbox.data import format_columns, format_heading, print_columns, print_heading
 from cerbernetix.toolbox.testing import test_cases
 
 
@@ -86,6 +86,51 @@ class TestDataFormatters(unittest.TestCase):
         ],
     ]
 
+    FORMAT_COLUMNS_CASES = [
+        [
+            "Column order, length of 30",
+            {
+                "cells": ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"],
+                "length": 30,
+            },
+            "apple          elderberry    \n"
+            + "banana         fig           \n"
+            + "cherry         grape         \n"
+            + "date          \n",
+        ],
+        [
+            "Row order, length of 30",
+            {
+                "cells": ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"],
+                "length": 30,
+                "col_dir": False,
+            },
+            "apple          banana        \n"
+            + "cherry         date          \n"
+            + "elderberry     fig           \n"
+            + "grape         \n",
+        ],
+        [
+            "Column order, length of 50",
+            {
+                "cells": ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"],
+                "length": 50,
+            },
+            "apple       cherry      elderberry  grape      \n"
+            + "banana      date        fig        \n",
+        ],
+        [
+            "Row order, length of 50",
+            {
+                "cells": ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"],
+                "length": 50,
+                "col_dir": False,
+            },
+            "apple       banana      cherry      date       \n"
+            + "elderberry  fig         grape      \n",
+        ],
+    ]
+
     @test_cases(FORMAT_HEADING_CASES)
     def test_format_heading(self, _, kwargs, value):
         """Test the title is formatted."""
@@ -96,4 +141,16 @@ class TestDataFormatters(unittest.TestCase):
         """Test the title is printed."""
         with patch("builtins.print") as mock_print:
             self.assertIsNone(print_heading(**kwargs))
+            mock_print.assert_called_once_with(value, end="")
+
+    @test_cases(FORMAT_COLUMNS_CASES)
+    def test_format_columns(self, _, kwargs, value):
+        """Test the cells are formatted into columns."""
+        self.assertEqual(format_columns(**kwargs), value)
+
+    @test_cases(FORMAT_COLUMNS_CASES)
+    def test_print_columns(self, _, kwargs, value):
+        """Test the cells are printed into columns."""
+        with patch("builtins.print") as mock_print:
+            self.assertIsNone(print_columns(**kwargs))
             mock_print.assert_called_once_with(value, end="")

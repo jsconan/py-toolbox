@@ -5,10 +5,26 @@ Examples:
 from cerbernetix.toolbox.data import formatters
 
 print(formatters.format_heading("Hello, World!"))
+# ---------------------------------------- Hello, World! ------------------------------------------
 
 formatters.print_heading("Hello, World!")
+# ---------------------------------------- Hello, World! ------------------------------------------
+
+print(formatters.format_columns([1, 2, 3, 4, 5, 6], 2))
+# 1 4
+# 2 5
+# 3 6
+
+formatters.print_columns([1, 2, 3, 4, 5, 6], 2)
+# 1 4
+# 2 5
+# 3 6
 ```
 """
+
+from typing import Any, Iterable
+
+from cerbernetix.toolbox.iterators import iter_cells
 
 
 def format_heading(
@@ -40,6 +56,7 @@ def format_heading(
     from cerbernetix.toolbox.data import formatters
 
     print(formatters.format_heading("Hello, World!"))
+    # -------------------------------------- Hello, World! ----------------------------------------
     ```
     """
     title_len = len(title)
@@ -95,6 +112,95 @@ def print_heading(
     from cerbernetix.toolbox.data import formatters
 
     formatters.print_heading("Hello, World!")
+    # -------------------------------------- Hello, World! ----------------------------------------
     ```
     """
     print(format_heading(title, length, decorator, justify, margin, simple), end="")
+
+
+def format_columns(
+    cells: Iterable[Any],
+    length: int = 100,
+    separator: str = " ",
+    col_dir: bool = True,
+) -> str:
+    """Formats a list of cells into columns.
+
+    Args:
+        cells (Iterable[Any]): The list of cells to format.
+        length (int, optional): The length of the table. If the length is not enough to fit all the
+            cells, they will be wrapped to the next line. Defaults to 100.
+        separator (str, optional): The separator between the columns. Defaults to " ".
+        col_dir (bool, optional): The direction of the columns. If True, the cells will be taken in
+            column order, otherwise in row order. Defaults to True.
+
+    Returns:
+        str: The formatted columns.
+
+    Examples:
+    ```python
+    from cerbernetix.toolbox.data import formatters
+
+    print(formatters.format_columns([1, 2, 3, 4, 5, 6], 2))
+    # 1 4
+    # 2 5
+    # 3 6
+
+    print(formatters.format_columns([1, 2, 3, 4, 5, 6], 2, col_dir=False))
+    # 1 2
+    # 3 4
+    # 5 6
+    ```
+    """
+    cells = [str(cell) for cell in cells]
+    nb_cells = len(cells)
+
+    separator_len = len(separator)
+    col_len = max((len(cell) for cell in cells))
+    nb_cols = (length + separator_len) // (col_len + separator_len)
+    col_len = (length - separator_len * (nb_cols - 1)) // nb_cols
+
+    output = ""
+    last = "\n"
+    for string in iter_cells(cells, nb_cols, nb_cells, col_dir):
+        if string != "\n":
+            string = string.ljust(col_len)
+            if last != "\n":
+                string = f"{separator}{string}"
+        output += string
+        last = string
+    return output
+
+
+def print_columns(
+    cells: Iterable[Any],
+    length: int = 100,
+    separator: str = " ",
+    col_dir: bool = True,
+) -> None:
+    """Prints a list of cells into columns.
+
+    Args:
+        cells (Iterable[Any]): The list of cells to format.
+        length (int, optional): The length of the table. If the length is not enough to fit all the
+            cells, they will be wrapped to the next line. Defaults to 100.
+        separator (str, optional): The separator between the columns. Defaults to " ".
+        col_dir (bool, optional): The direction of the columns. If True, the cells will be taken in
+            column order, otherwise in row order. Defaults to True.
+
+    Examples:
+    ```python
+    from cerbernetix.toolbox.data import formatters
+
+    formatters.print_columns([1, 2, 3, 4, 5, 6], 2)
+    # 1 4
+    # 2 5
+    # 3 6
+
+    formatters.print_columns([1, 2, 3, 4, 5, 6], 2, col_dir=False)
+    # 1 2
+    # 3 4
+    # 5 6
+    ```
+    """
+    print(format_columns(cells, length, separator, col_dir), end="")

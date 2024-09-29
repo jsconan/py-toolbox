@@ -1,6 +1,7 @@
 """The `system` package provides several utilities for low level management.
 
 It contains:
+- `concurrent_tasks(callback, tasks)`: Calls the given callback concurrently with the given tasks.
 - `full_type(value)`: Returns with the fully qualified type of the given value.
 - `import_property(ns)`: Imports a property from the given namespace.
 - `import_and_call(ns)`: Imports a function from the given namespace and call it with parameters.
@@ -33,7 +34,25 @@ except ImportError as e:
 except TypeError as e:
     print(f"Unable to call the update helper: {e}")
 ```
+
+```python
+from cerbernetix.toolbox.system import concurrent_tasks
+
+def add(a, b):
+    return a + b
+
+task_args = [
+    {"a": 1, "b": 2},
+    {"a": 3, "b": 4},
+    {"a": 5, "b": 6},
+]
+
+for result in concurrent_tasks(add, task_args):
+    print(result)
+# Output: 3 7 11
+```
 """
 
 from cerbernetix.toolbox.system.module import import_and_call, import_property
+from cerbernetix.toolbox.system.parallel import concurrent_tasks
 from cerbernetix.toolbox.system.type import full_type

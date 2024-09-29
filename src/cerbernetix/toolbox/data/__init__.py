@@ -1,6 +1,9 @@
 """A collection of data utilities.
 
 It contains:
+- Formatters:
+    - `format_heading(title, length, decorator, justify, margin, simple)` - Formats a heading.
+    - `print_heading(title, length, decorator, justify, margin, simple)` - Prints a heading.
 - Value mappers:
     - `passthrough(value)` - A passthrough mapper. It returns the value as it is.
     - `boolean(value)` - Converts a value to a boolean value.
@@ -52,5 +55,6 @@ print([extractor.aggregate(row) for row in data]) # ["John Smith", "Jane Doe"]
 ```
 """
 
+from cerbernetix.toolbox.data.formatters import format_heading, print_heading
 from cerbernetix.toolbox.data.mappers import ValueMapper, boolean, decimal, default, passthrough
 from cerbernetix.toolbox.data.value_extractor import ValueExtractor

@@ -72,17 +72,24 @@ class TestDataFormatters(unittest.TestCase):
             "\n" + ("-" * 46) + " Hello " + ("-" * 47) + "\n\n",
         ],
         [
-            "Double decorator",
-            {"title": "Hello", "simple": False},
-            "\n"
-            + ("-" * 100)
-            + "\n"
-            + (" " * 46)
-            + " Hello "
-            + (" " * 47)
-            + "\n"
-            + ("-" * 100)
-            + "\n\n",
+            "Double border - int",
+            {"title": "Hello", "border": 1},
+            "\n" + ("-" * 100) + "\n" + (" " * 46) + " Hello\n" + ("-" * 100) + "\n\n",
+        ],
+        [
+            "Double border - list",
+            {"title": "Hello", "border": [1]},
+            "\n" + ("-" * 100) + "\n" + (" " * 46) + " Hello\n" + ("-" * 100) + "\n\n",
+        ],
+        [
+            "Border before",
+            {"title": "Hello", "border": [1, 0]},
+            "\n" + ("-" * 100) + "\n" + (" " * 46) + " Hello\n\n",
+        ],
+        [
+            "Border after",
+            {"title": "Hello", "border": [0, 1]},
+            "\n" + (" " * 46) + " Hello\n" + ("-" * 100) + "\n\n",
         ],
     ]
 

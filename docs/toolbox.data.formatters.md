@@ -42,7 +42,7 @@ format_heading(
     decorator: str = '-',
     justify: int = 0,
     margin: int | list[int] = 1,
-    simple: bool = True
+    border: int | list[int] = 0
 ) → str
 ```
 
@@ -57,7 +57,7 @@ Formats a heading.
  - <b>`decorator`</b> (str, optional):  The character used to decorate the heading. Defaults to "-". 
  - <b>`justify`</b> (int, optional):  The justification of the title. -1 for left, 0 for center,  1 for right. Defaults to 0. 
  - <b>`margin`</b> (int, list[int], optional):  The margin of the heading. If a list, the first element  is the top margin, the second is the bottom margin. Defaults to 1. 
- - <b>`simple`</b> (bool, optional):  If True, the heading will be simplified to one single line.  Defaults to True. 
+ - <b>`border`</b> (int, list[int], optional):  The border of the heading. If a list, the first element  is the top border, the second is the bottom border. If no border is defined, the heading  will be simplified to one single line. Defaults to 0. 
 
 
 
@@ -78,7 +78,7 @@ print(formatters.format_heading("Hello, World!"))
 
 ---
 
-<a href="../src/cerbernetix/toolbox/data/formatters.py#L89"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/formatters.py#L98"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `print_heading`
 
@@ -89,7 +89,7 @@ print_heading(
     decorator: str = '-',
     justify: int = 0,
     margin: int | list[int] = 1,
-    simple: bool = True
+    border: int | list[int] = 0
 ) → None
 ```
 
@@ -104,7 +104,7 @@ Prints a formatted heading.
  - <b>`decorator`</b> (str, optional):  The character used to decorate the heading. Defaults to "-". 
  - <b>`justify`</b> (int, optional):  The justification of the title. -1 for left, 0 for center,  1 for right. Defaults to 0. 
  - <b>`margin`</b> (int, list[int], optional):  The margin of the heading. If a list, the first element  is the top margin, the second is the bottom margin. Defaults to 1. 
- - <b>`simple`</b> (bool, optional):  If True, the heading will be simplified to one single line.  Defaults to True. 
+ - <b>`border`</b> (int, list[int], optional):  The border of the heading. If a list, the first element  is the top border, the second is the bottom border. If no border is defined, the heading  will be simplified to one single line. Defaults to 0. 
 
 
 
@@ -119,7 +119,7 @@ formatters.print_heading("Hello, World!")
 
 ---
 
-<a href="../src/cerbernetix/toolbox/data/formatters.py#L121"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/formatters.py#L131"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `format_columns`
 
@@ -169,7 +169,7 @@ print(formatters.format_columns([1, 2, 3, 4, 5, 6], 2, col_dir=False))
 
 ---
 
-<a href="../src/cerbernetix/toolbox/data/formatters.py#L175"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../src/cerbernetix/toolbox/data/formatters.py#L185"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `print_columns`
 

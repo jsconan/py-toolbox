@@ -33,7 +33,7 @@ def format_heading(
     decorator: str = "-",
     justify: int = 0,
     margin: int | list[int] = 1,
-    simple: bool = True,
+    border: int | list[int] = 0,
 ) -> str:
     """Formats a heading.
 
@@ -45,8 +45,9 @@ def format_heading(
             1 for right. Defaults to 0.
         margin (int, list[int], optional): The margin of the heading. If a list, the first element
             is the top margin, the second is the bottom margin. Defaults to 1.
-        simple (bool, optional): If True, the heading will be simplified to one single line.
-            Defaults to True.
+        border (int, list[int], optional): The border of the heading. If a list, the first element
+            is the top border, the second is the bottom border. If no border is defined, the heading
+            will be simplified to one single line. Defaults to 0.
 
     Returns:
         str: The formatted heading.
@@ -72,6 +73,12 @@ def format_heading(
     margin_before = "\n" * margin[0]
     margin_after = "\n" * margin[1]
 
+    if isinstance(border, int):
+        border = [border, border]
+    if len(border) == 1:
+        border *= 2
+    simple = sum(border) == 0
+
     if justify == -1 and length > title_len:
         title = f"{title} ".ljust(length, decorator if simple else " ")
     elif justify == 0 and length >= title_len + 2:
@@ -80,10 +87,12 @@ def format_heading(
         title = f" {title}".rjust(length, decorator if simple else " ")
 
     if simple:
-        return f"{margin_before}{title}\n{margin_after}"
+        return f"{margin_before}{title.rstrip()}\n{margin_after}"
 
     line = (decorator * (length // len(decorator) + 1))[:length]
-    return f"{margin_before}{line}\n{title}\n{line}\n{margin_after}"
+    border_before = f"{line}\n" if border[0] else ""
+    border_after = f"{line}\n" if border[1] else ""
+    return f"{margin_before}{border_before}{title.rstrip()}\n{border_after}{margin_after}"
 
 
 def print_heading(
@@ -92,7 +101,7 @@ def print_heading(
     decorator: str = "-",
     justify: int = 0,
     margin: int | list[int] = 1,
-    simple: bool = True,
+    border: int | list[int] = 0,
 ) -> None:
     """Prints a formatted heading.
 
@@ -104,8 +113,9 @@ def print_heading(
             1 for right. Defaults to 0.
         margin (int, list[int], optional): The margin of the heading. If a list, the first element
             is the top margin, the second is the bottom margin. Defaults to 1.
-        simple (bool, optional): If True, the heading will be simplified to one single line.
-            Defaults to True.
+        border (int, list[int], optional): The border of the heading. If a list, the first element
+            is the top border, the second is the bottom border. If no border is defined, the heading
+            will be simplified to one single line. Defaults to 0.
 
     Examples:
     ```python
@@ -115,7 +125,7 @@ def print_heading(
     # -------------------------------------- Hello, World! ----------------------------------------
     ```
     """
-    print(format_heading(title, length, decorator, justify, margin, simple), end="")
+    print(format_heading(title, length, decorator, justify, margin, border), end="")
 
 
 def format_columns(
